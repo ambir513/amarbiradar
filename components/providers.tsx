@@ -13,7 +13,7 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
       defaultTheme="system"
       attribute="class"
     >
-      {children}
+    {children}
     </ThemeProvider>
   );
 };
