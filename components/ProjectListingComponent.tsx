@@ -75,7 +75,7 @@ export default function ProjectListingComponent({
             >
               <motion.div
                 ref={ref}
-                className="flex max-h-[90vh] w-full max-w-2xl flex-col gap-4 rounded-xl border bg-background p-6 shadow-lg"
+                className="flex max-h-[90vh] w-full flex-col gap-4 rounded-xl border bg-background p-6 shadow-lg sm:w-sm"
               >
                 <div className="flex flex-col items-center gap-4">
                   <div>
@@ -141,7 +141,7 @@ export default function ProjectListingComponent({
                   height={364}
                   className="object-cover"
                 />
-              </div>  
+              </div>
               <div className="flex w-full flex-col gap-y-1 px-4 pb-5">
                 <div className="font-medium">{project.name}</div>
                 <div className="text-xs text-muted-foreground">

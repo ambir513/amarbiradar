@@ -13,16 +13,18 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "VB Enterprieses",
+    name: "VB Enterprises",
     logo: "/image/vb.png",
+    link: "https://vbenterprises.work",
     description:
       "A graphic design collaboration app for hybrid teams focused on creative workflows.",
-    tech: ["Next.js", "Turso", "ShadCN UI"],
-    type: "Hybrid App",
+    tech: ["Next.js", "TailwindCSS", "Shadcn UI", "21st dev", "Clerk Auth"],
+    type: "Company Website",
   },
   {
     name: "The DevTinder",
     logo: "/image/dev.png",
+    link: "https://thedevtinder.xyz",
     description:
       "Inspired by the Tinder platform. Designed to foster professional connections among developers",
     tech: ["Next.js", "TailwindCSS", "Framer Motion"],
@@ -32,6 +34,7 @@ const projects: Project[] = [
   {
     name: "Youtube Clone",
     logo: "/image/yt.png",
+    link: "https://youtube.amarbiradar.me",
     description:
       "Email automation and delivery platform with a modern dashboard and real-time analytics.",
     tech: ["React", "Clerk", "Resend API"],
@@ -40,23 +43,16 @@ const projects: Project[] = [
   {
     name: "Swiggy Clone",
     logo: "/image/swiggy.png",
+    link: "https://swiggy.amarbiradar.me",
     description:
       "This project is uses the Swiggy Production API. It is a clone of the Swiggy App for learning purposes.",
     tech: ["React", "Clerk", "Resend API"],
     type: "SaaS Tool",
   },
-
   {
     name: "FitMaker",
     logo: "/image/fitmaker.png",
-    description:
-      "A graphic design collaboration app for hybrid teams focused on creative workflows.",
-    tech: ["Next.js", "Turso", "ShadCN UI"],
-    type: "Hybrid App",
-  },
-  {
-    name: "FitMaker",
-    logo: "/image/fitmaker.png",
+    link: "https://fitmaker.vercel.app",
     description:
       "A graphic design collaboration app for hybrid teams focused on creative workflows.",
     tech: ["Next.js", "Turso", "ShadCN UI"],

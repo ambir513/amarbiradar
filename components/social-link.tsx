@@ -31,7 +31,7 @@ const socialLink = [
   },
   {
     link: "https://linkedin.com/in/ambir513",
-    icon: "https://i.pinimg.com/736x/b9/3d/6a/b93d6a1585243dac15cd51731e7be59e.jpg",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
     name: "LinkedIn",
   },
 ];
