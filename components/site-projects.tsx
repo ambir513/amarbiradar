@@ -4,7 +4,7 @@ import ProjectListingComponent from "./ProjectListingComponent";
 
 interface Project {
   name: string;
-  logo: React.ReactNode;
+  logo: string;
   description: string;
   tech: string[];
   link?: string;
@@ -13,24 +13,50 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "Supabase",
-    logo: <h1>Hii</h1>,
+    name: "VB Enterprieses",
+    logo: "/image/vb.png",
     description:
-      "A UI/UX design system built for Supabase community projects with animations and accessibility.",
+      "A graphic design collaboration app for hybrid teams focused on creative workflows.",
+    tech: ["Next.js", "Turso", "ShadCN UI"],
+    type: "Hybrid App",
+  },
+  {
+    name: "The DevTinder",
+    logo: "/image/dev.png",
+    description:
+      "Inspired by the Tinder platform. Designed to foster professional connections among developers",
     tech: ["Next.js", "TailwindCSS", "Framer Motion"],
     type: "Web App",
   },
+
   {
-    name: "Resend",
-    logo: <h1>Hii</h1>,
+    name: "Youtube Clone",
+    logo: "/image/yt.png",
     description:
       "Email automation and delivery platform with a modern dashboard and real-time analytics.",
     tech: ["React", "Clerk", "Resend API"],
     type: "SaaS Tool",
   },
   {
-    name: "Turso",
-    logo: <h1>Hii</h1>,
+    name: "Swiggy Clone",
+    logo: "/image/swiggy.png",
+    description:
+      "This project is uses the Swiggy Production API. It is a clone of the Swiggy App for learning purposes.",
+    tech: ["React", "Clerk", "Resend API"],
+    type: "SaaS Tool",
+  },
+
+  {
+    name: "FitMaker",
+    logo: "/image/fitmaker.png",
+    description:
+      "A graphic design collaboration app for hybrid teams focused on creative workflows.",
+    tech: ["Next.js", "Turso", "ShadCN UI"],
+    type: "Hybrid App",
+  },
+  {
+    name: "FitMaker",
+    logo: "/image/fitmaker.png",
     description:
       "A graphic design collaboration app for hybrid teams focused on creative workflows.",
     tech: ["Next.js", "Turso", "ShadCN UI"],

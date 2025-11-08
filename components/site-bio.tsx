@@ -37,19 +37,44 @@ const TechStackBtn = [
 
 export function SiteBio() {
   const clickAudio = useRef<HTMLAudioElement | null>(null);
-  const [show, setShow] = useState(false);
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShow(true);
-    }, 250);
-    return () => clearTimeout(timer);
+    setMounted(true);
   }, []);
+
+  if (!mounted) {
+    return (
+      <main className="mt-15 w-full">
+        <div className="mx-auto flex max-w-3xl flex-col gap-y-10">
+          <div className="flex flex-col gap-y-4">
+            <div className="flex h-30 gap-x-2">
+              <Skeleton className="size-24 rounded-full" />
+              <div className="mt-10 flex flex-col gap-y-3">
+                <Skeleton className="h-6 w-32" />
+                <Skeleton className="h-4 w-40" />
+              </div>
+            </div>
+            <div className="">
+              <Skeleton className="sm:h-20 h-28 w-full" />
+            </div>
+            <div className="">
+              <Skeleton className="h-10 w-[220px]" />
+            </div>
+            <div className="">
+              <Skeleton className="h-20 w-full" />
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="mt-10 w-full">
       <div className="mx-auto flex max-w-3xl flex-col gap-y-7">
+        {/* Avatar & name */}
         <div className="flex gap-x-3">
           <div className="rounded-full border-2 p-0.5 dark:border-neutral-800">
             <Avatar className="size-24">
@@ -57,6 +82,7 @@ export function SiteBio() {
               <AvatarFallback className="text-5xl">AB</AvatarFallback>
             </Avatar>
           </div>
+
           <div className="mt-12">
             <div className="flex items-center gap-x-2">
               <p className="text-2xl font-bold select-none">Amar Biradar</p>
@@ -83,28 +109,30 @@ export function SiteBio() {
             </p>
           </div>
         </div>
+
+        {/* Tech Stack */}
         <div>
           <div className="flex w-fit flex-wrap items-center gap-2">
             <span className="text-muted-foreground sm:text-lg">
-              {" "}
-              I develop interactive web app using{" "}
+              I develop interactive web apps using{" "}
             </span>
+
             {TechStackBtn.map((item) => (
               <button
                 key={item.name}
-                className="flex w-fit items-center gap-3 gap-x-1 rounded-md border-2 bg-neutral-100 px-2 hover:bg-neutral-200/60 dark:border-zinc-800 dark:bg-neutral-900 hover:dark:bg-neutral-700/40"
+                className="flex w-fit items-center gap-1 rounded-md border-2 bg-neutral-100 px-2 hover:bg-neutral-200/60 dark:border-zinc-800 dark:bg-neutral-900 hover:dark:bg-neutral-700/40"
               >
                 {item.name === "NextJs" ? (
-                  theme === "light" ? (
-                    <NextJSDark />
-                  ) : (
+                  theme === "dark" ? (
                     <NextJSLight />
+                  ) : (
+                    <NextJSDark />
                   )
                 ) : item.name === "Prisma" ? (
-                  theme === "light" ? (
-                    <PrismaDark />
-                  ) : (
+                  theme === "dark" ? (
                     <PrismaLight />
+                  ) : (
+                    <PrismaDark />
                   )
                 ) : (
                   <item.icons />
@@ -114,6 +142,7 @@ export function SiteBio() {
                 </span>
               </button>
             ))}
+
             <span className="text-muted-foreground sm:text-lg">
               and also interested in mobile development like{" "}
               <span className="text-md font-medium text-primary">
@@ -122,26 +151,25 @@ export function SiteBio() {
             </span>
           </div>
         </div>
+
+        {/* Social links */}
         <SocialLink />
-        <div className="">
-          <div className="h-28">
-            {show ? (
-              <iframe
-                className="rounded-xl shadow-sm"
-                style={{ border: "none" }}
-                data-testid="embed-iframe"
-                src="https://open.spotify.com/embed/album/6Unm4KKxYtjR08J1wEOnkc?utm_source=generator&theme=0"
-                width="100%"
-                height="80"
-                loading="lazy"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              ></iframe>
-            ) : (
-              <Skeleton className="h-20" />
-            )}
-          </div>
+
+        {/* Spotify embed */}
+        <div className="h-28">
+          <iframe
+            className="rounded-xl shadow-sm"
+            style={{ border: "none" }}
+            data-testid="embed-iframe"
+            src="https://open.spotify.com/embed/album/6Unm4KKxYtjR08J1wEOnkc?utm_source=generator&theme=0"
+            width="100%"
+            height="80"
+            loading="lazy"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          />
         </div>
       </div>
+
       <audio ref={clickAudio} className="hidden" controls>
         <source src="/audio/amarbiradar-audio.mp3" type="audio/mp3" />
       </audio>
@@ -166,6 +194,14 @@ function TS() {
 }
 
 function NextJSDark() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null; // Prevent SSR mismatch
+
+  const fillColor = theme === "dark" ? "#fff" : "#000";
+
   return (
     <svg
       width="15"
@@ -176,13 +212,20 @@ function NextJSDark() {
     >
       <path
         d="m4.5 4.5.405-.293A.5.5 0 0 0 4 4.5zm3 9.5A6.5 6.5 0 0 1 1 7.5H0A7.5 7.5 0 0 0 7.5 15zM14 7.5A6.5 6.5 0 0 1 7.5 14v1A7.5 7.5 0 0 0 15 7.5zM7.5 1A6.5 6.5 0 0 1 14 7.5h1A7.5 7.5 0 0 0 7.5 0zm0-1A7.5 7.5 0 0 0 0 7.5h1A6.5 6.5 0 0 1 7.5 1zM5 12V4.5H4V12zm-.905-7.207 6.5 9 .81-.586-6.5-9zM10 4v6h1V4z"
-        fill="#000"
+        fill={fillColor}
       ></path>
     </svg>
   );
 }
 
 function NextJSLight() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null; // Prevent SSR mismatch
+
+  const fillColor = theme === "dark" ? "#fff" : "#000";
   return (
     <svg
       width="15"
@@ -193,7 +236,7 @@ function NextJSLight() {
     >
       <path
         d="m4.5 4.5.405-.293A.5.5 0 0 0 4 4.5zm3 9.5A6.5 6.5 0 0 1 1 7.5H0A7.5 7.5 0 0 0 7.5 15zM14 7.5A6.5 6.5 0 0 1 7.5 14v1A7.5 7.5 0 0 0 15 7.5zM7.5 1A6.5 6.5 0 0 1 14 7.5h1A7.5 7.5 0 0 0 7.5 0zm0-1A7.5 7.5 0 0 0 0 7.5h1A6.5 6.5 0 0 1 7.5 1zM5 12V4.5H4V12zm-.905-7.207 6.5 9 .81-.586-6.5-9zM10 4v6h1V4z"
-        fill="#fff"
+        fill={fillColor}
       ></path>
     </svg>
   );
@@ -225,6 +268,13 @@ function ReactJS() {
 }
 
 function PrismaLight() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null; // Prevent SSR mismatch
+
+  const fillColor = theme === "dark" ? "#fff" : "#000";
   return (
     <svg
       width="16"
@@ -234,13 +284,20 @@ function PrismaLight() {
       preserveAspectRatio="xMidYMid"
     >
       <path
-        fill="#fff"
+        fill={fillColor}
         d="M254.313 235.519 148 9.749A17.06 17.06 0 0 0 133.473.037a16.87 16.87 0 0 0-15.533 8.052L2.633 194.848a17.47 17.47 0 0 0 .193 18.747L59.2 300.896a18.13 18.13 0 0 0 20.363 7.489l163.599-48.392a17.93 17.93 0 0 0 11.26-9.722 17.54 17.54 0 0 0-.101-14.76zm-23.802 9.683-138.823 41.05c-4.235 1.26-8.3-2.411-7.419-6.685l49.598-237.484c.927-4.443 7.063-5.147 9.003-1.035l91.814 194.973a6.63 6.63 0 0 1-4.18 9.18z"
       ></path>
     </svg>
   );
 }
 function PrismaDark() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null; // Prevent SSR mismatch
+
+  const fillColor = theme === "dark" ? "#fff" : "#000";
   return (
     <svg
       width="16"
@@ -250,7 +307,7 @@ function PrismaDark() {
       preserveAspectRatio="xMidYMid"
     >
       <path
-        fill="#000"
+        fill={fillColor}
         d="M254.313 235.519 148 9.749A17.06 17.06 0 0 0 133.473.037a16.87 16.87 0 0 0-15.533 8.052L2.633 194.848a17.47 17.47 0 0 0 .193 18.747L59.2 300.896a18.13 18.13 0 0 0 20.363 7.489l163.599-48.392a17.93 17.93 0 0 0 11.26-9.722 17.54 17.54 0 0 0-.101-14.76zm-23.802 9.683-138.823 41.05c-4.235 1.26-8.3-2.411-7.419-6.685l49.598-237.484c.927-4.443 7.063-5.147 9.003-1.035l91.814 194.973a6.63 6.63 0 0 1-4.18 9.18z"
       ></path>
     </svg>

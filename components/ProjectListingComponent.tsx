@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 /* ---------- Types ---------- */
 export interface Project {
   name: string;
-  logo: React.ReactNode;
+  logo: string;
   description: string;
   tech: string[];
   link?: string;
@@ -76,10 +77,17 @@ export default function ProjectListingComponent({
                 ref={ref}
                 className="flex max-h-[90vh] w-full max-w-2xl flex-col gap-4 rounded-xl border bg-background p-6 shadow-lg"
               >
-                <div className="flex items-center gap-4">
-                  <div>{activeItem.logo}</div>
+                <div className="flex flex-col items-center gap-4">
+                  <div>
+                    <Image
+                      src={"/image/dev.jpg"}
+                      alt={activeItem.name}
+                      width={300}
+                      height={300}
+                      className=""
+                    />
+                  </div>
                   <div className="flex grow flex-col">
-                    <h2 className="text-lg font-semibold">{activeItem.name}</h2>
                     <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
                       {activeItem.tech.map((t) => (
                         <span
@@ -114,22 +122,30 @@ export default function ProjectListingComponent({
       </AnimatePresence>
 
       {/* Project List */}
-      <div className={`relative flex items-start p-6 ${className || ""}`}>
-        <div className="relative flex w-full flex-col items-center gap-4 px-2">
+      <div className={`relative flex items-start p-2 ${className || ""}`}>
+        <div className="relative grid w-full grid-cols-1 items-center gap-5 md:grid-cols-2">
           {projects.map((project) => (
             <div
               key={project.name}
-              className="group flex w-full cursor-pointer items-center gap-4 rounded-lg border bg-background p-4 shadow-sm transition hover:shadow-md"
+              className="group mx-auto flex w-[320px] cursor-pointer flex-col items-center justify-center gap-4 rounded-lg border bg-background shadow-sm transition hover:shadow-md sm:w-[364px]"
               onClick={() => {
                 setActiveItem(project);
                 onProjectClick?.(project);
               }}
             >
-              <div>{project.logo}</div>
-              <div className="flex w-full flex-col">
+              <div className="w-full overflow-hidden rounded-t-xl sm:w-[364px]">
+                <Image
+                  src={project.logo}
+                  alt={project.name}
+                  width={364}
+                  height={364}
+                  className="object-cover"
+                />
+              </div>  
+              <div className="flex w-full flex-col gap-y-1 px-4 pb-5">
                 <div className="font-medium">{project.name}</div>
                 <div className="text-xs text-muted-foreground">
-                  {project.type || "Project"}
+                  {project.description}
                 </div>
               </div>
             </div>

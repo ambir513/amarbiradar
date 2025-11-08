@@ -29,6 +29,11 @@ const socialLink = [
     icon: "https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg",
     name: "X",
   },
+  {
+    link: "https://linkedin.com/in/ambir513",
+    icon: "https://i.pinimg.com/736x/b9/3d/6a/b93d6a1585243dac15cd51731e7be59e.jpg",
+    name: "LinkedIn",
+  },
 ];
 
 export function SocialLink() {
