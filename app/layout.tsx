@@ -67,6 +67,31 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Amar Biradar",
+              alternateName: "AmBir",
+              givenName: "Amar",
+              familyName: "Biradar",
+              description:
+                "AmBir is a Full Stack Web Developer specializing in React, Next.js, and modern web technologies.",
+              url: "https://amarbiradar.me",
+              image: "https://amarbiradar.me/image/ambir513.jpeg",
+              jobTitle: "Full Stack Web Developer",
+              sameAs: [
+                "https://github.com/ambir513",
+                "https://linkedin.com/in/ambir513",
+                "https://x.com/ambir513",
+                "https://youtube.com/@ambir513",
+                "https://instagram.com/ambir513",
+              ],
+            }),
+          }}
+        />
       </head>
       <body className={`${geistSans.className} antialiased`}>
         <Providers>{children}</Providers>
