@@ -32,8 +32,8 @@ const data = days.map((date) => {
 });
 
 export const Contribution = () => (
-  <ContributionGraph data={data} className="mx-auto my-10 max-w-3xl">
-    <h1 className="text-lg font-semibold mb-2">Github Contributions</h1>
+  <ContributionGraph data={data} className="w-300px sm:mx-auto my-10 md:max-w-3xl">
+    <h1 className="mb-2 text-lg font-semibold">Github Contributions</h1>
     <ContributionGraphCalendar>
       {({ activity, dayIndex, weekIndex }) => (
         <ContributionGraphBlock
