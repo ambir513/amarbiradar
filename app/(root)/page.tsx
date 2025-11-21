@@ -1,4 +1,5 @@
 import { Contribution } from "@/components/contribution";
+import { SiteAboutSection } from "@/components/site-about";
 import { SiteBio } from "@/components/site-bio";
 import { SiteExperience } from "@/components/site-experience";
 import { SiteProjects } from "@/components/site-projects";
@@ -9,7 +10,9 @@ export default function LandingPage() {
       <SiteBio />
       <SiteExperience />
       <SiteProjects />
+      <SiteAboutSection />
       <Contribution />
+      <div className="mx-auto max-w-3xl">under building......</div>
     </main>
   );
 }

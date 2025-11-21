@@ -33,9 +33,9 @@ export const Contribution = () => {
   return (
     <ContributionGraph
       data={data}
-      className="my-10 w-fit sm:mx-auto md:max-w-3xl"
+      className="my-20 w-fit sm:mx-auto md:max-w-3xl"
     >
-      <h1 className="mb-2 text-lg font-semibold">Github Contributions</h1>
+      <h1 className="mb-4 text-xl font-semibold">Github Activity</h1>
 
       <ContributionGraphCalendar>
         {({ activity, dayIndex, weekIndex }) => (
