@@ -2,6 +2,7 @@
 import { MoonStar, SunIcon } from "lucide-react";
 import { useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "./ui/button";
 type AnimationVariant = "circle" | "circle-blur" | "gif" | "polygon";
 type StartPosition =
   | "center"
@@ -53,8 +54,7 @@ export const ThemeAnimate = ({
     };
 
     if (variant === "circle") {
-      const cx =
-        start === "center" ? "50" : start.includes("left") ? "0" : "100";
+      const cx = start === "center" ? "50" : start.includes("left") ? "0" : "0";
       const cy =
         start === "center" ? "50" : start.includes("top") ? "0" : "100";
       css = `
@@ -71,7 +71,7 @@ export const ThemeAnimate = ({
               clip-path: circle(0% at ${cx}% ${cy}%);
             }
             to {
-              clip-path: circle(200% at ${cx}% ${cy}%);
+              clip-path: circle(100% at ${cx}% ${cy}%);
             }
           }
         }
@@ -94,7 +94,7 @@ export const ThemeAnimate = ({
           @keyframes circle-blur-expand {
             from {
               clip-path: circle(0% at ${cx}% ${cy}%);
-              filter: blur(20px);
+              filter: blur(30px);
             }
             to {
               clip-path: circle(140% at ${cx}% ${cy}%);
@@ -185,12 +185,11 @@ export const ThemeAnimate = ({
     onClick?.();
   }, [onClick, variant, start, url, theme]);
   return (
-    <button
+    <Button
+      variant={"outline"}
+      className="rounded-full"
+      size={"icon"}
       onClick={handleClick}
-      className={cn(
-        "rounded-full border-2 border-zinc-200 bg-white/10 p-2 dark:border-zinc-700 dark:bg-zinc-800",
-        className
-      )}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
     >
       <audio ref={audioRef} className="hidden" preload="auto">
@@ -205,7 +204,7 @@ export const ThemeAnimate = ({
       {showLabel && (
         <span className="text-sm">{theme === "light" ? "Light" : "Dark"}</span>
       )}
-    </button>
+    </Button>
   );
 };
 // Export a helper hook for using with View Transitions API

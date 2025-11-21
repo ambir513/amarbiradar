@@ -5,7 +5,7 @@ import { SiteProjects } from "@/components/site-projects";
 
 export default function LandingPage() {
   return (
-    <main className="mx-3 mt-26 space-y-3">
+    <main className="mx-3 mt-26 space-y-10">
       <SiteBio />
       <SiteExperience />
       <SiteProjects />

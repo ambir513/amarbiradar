@@ -12,6 +12,8 @@ import { useTheme } from "next-themes";
 import { SocialLink } from "./social-link";
 import { Skeleton } from "./ui/skeleton";
 import { cn } from "@/lib/utils";
+import AudioPlay from "./audio-play";
+import { Button } from "./ui/button";
 
 const TechStackBtn = [
   {
@@ -43,38 +45,6 @@ const TechStackBtn = [
 export function SiteBio() {
   const clickAudio = useRef<HTMLAudioElement | null>(null);
   const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <main className="mt-15 w-full">
-        <div className="mx-auto flex max-w-3xl flex-col gap-y-10">
-          <div className="flex flex-col gap-y-4">
-            <div className="flex h-30 gap-x-2">
-              <Skeleton className="size-24 rounded-full" />
-              <div className="mt-10 flex flex-col gap-y-3">
-                <Skeleton className="h-6 w-32" />
-                <Skeleton className="h-4 w-40" />
-              </div>
-            </div>
-            <div className="">
-              <Skeleton className="h-28 w-full sm:h-20" />
-            </div>
-            <div className="">
-              <Skeleton className="h-10 w-[220px]" />
-            </div>
-            <div className="">
-              <Skeleton className="h-20 w-full" />
-            </div>
-          </div>
-        </div>
-      </main>
-    );
-  }
 
   return (
     <main className="mt-10 w-full">
@@ -114,7 +84,6 @@ export function SiteBio() {
             </p>
           </div>
         </div>
-
         {/* Tech Stack */}
         <div>
           <div className="flex w-fit flex-wrap items-center gap-2">
@@ -123,10 +92,7 @@ export function SiteBio() {
             </span>
 
             {TechStackBtn.map((item) => (
-              <button
-                key={item.name}
-                className="flex w-fit items-center gap-1 rounded-md border-2 bg-neutral-100 px-2 hover:bg-neutral-200/60 dark:border-zinc-800 dark:bg-neutral-900 hover:dark:bg-neutral-700/40"
-              >
+              <Button key={item.name} variant={"outline"} size={"xxs"}>
                 <Image
                   className={cn(
                     "size-3.5",
@@ -141,7 +107,7 @@ export function SiteBio() {
                 <span className="text-sm font-medium tracking-tight">
                   {item.name}
                 </span>
-              </button>
+              </Button>
             ))}
 
             <span className="text-muted-foreground sm:text-lg">
@@ -152,23 +118,9 @@ export function SiteBio() {
             </span>
           </div>
         </div>
-
         {/* Social links */}
         <SocialLink />
-
-        {/* Spotify embed */}
-        <div className="h-28">
-          <iframe
-            className="rounded-xl shadow-sm"
-            style={{ border: "none" }}
-            data-testid="embed-iframe"
-            src="https://open.spotify.com/embed/album/6Unm4KKxYtjR08J1wEOnkc?utm_source=generator&theme=0"
-            width="100%"
-            height="80"
-            loading="lazy"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          />
-        </div>
+        <AudioPlay />
       </div>
 
       <audio ref={clickAudio} className="hidden" controls>

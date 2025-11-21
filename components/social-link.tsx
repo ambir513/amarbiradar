@@ -34,6 +34,11 @@ const socialLink = [
     icon: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
     name: "LinkedIn",
   },
+  {
+    link: "https://drive.google.com/file/d/16NM0EGlmNTPconVwr77pNebaXljUxE_l/view?usp=sharing",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Drive_icon_%282020%29.svg/640px-Google_Drive_icon_%282020%29.svg.png",
+    name: "Resume",
+  },
 ];
 
 export function SocialLink() {
@@ -54,7 +59,11 @@ export function SocialLink() {
                       : "border-2 border-neutral-700"
                   )}
                 >
-                  <AvatarImage src={social.icon} alt={social.name} />
+                  <AvatarImage
+                    src={social.icon}
+                    alt={social.name}
+                    className={social.name === "Resume" ? "bg-white p-1" : ""}
+                  />
                   <AvatarFallback>{social.name[0]}</AvatarFallback>
                 </Avatar>
               </TooltipTrigger>

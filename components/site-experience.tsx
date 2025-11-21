@@ -43,7 +43,7 @@ const ExperienceList = [
       "• Utilized Postman for comprehensive API testing to ensure the reliability and security of backend services and data, interactions.",
     ],
     image:
-      "https://media.licdn.com/dms/image/v2/D560BAQEKvzWWZov4gw/company-logo_200_200/B56ZWzGKyXGoAI-/0/1742466494132?e=1763596800&v=beta&t=1QTrJD-Ai_8zws3LxRkb6vcflZa2a9eLM0Mk_l_F2XQ",
+      "https://media.licdn.com/dms/image/v2/D560BAQEKvzWWZov4gw/company-logo_200_200/B56ZWzGKyXGoAI-/0/1742466494132?e=1765411200&v=beta&t=i48QFjMZeUAl5KKl8T8jh4225sIGPs0dsLxHWuJuPq4",
     role: "SDE-1 (MERN Stack) Intern",
     range: "Feb - May 2025",
     location: "Mumbai, India (On-Site)",
@@ -83,7 +83,7 @@ export function SiteExperience() {
                   <h1 className="text-md font-semibold">Tech Stack</h1>
                   <div className="flex flex-wrap items-center gap-2">
                     {experience.tech.map((tech) => (
-                      <Button key={tech.name}>
+                      <Button key={tech.name} variant={"outline"} size={"xs"}>
                         <tech.icons />
                         {tech.name}
                       </Button>

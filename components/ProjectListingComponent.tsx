@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { BlurFade } from "./ui/blur-fade";
 
 /* ---------- Types ---------- */
 export interface Project {
@@ -57,7 +58,7 @@ export default function ProjectListingComponent({
           <>
             {/* Background Overlay */}
             <motion.div
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-md"
+              className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -125,30 +126,31 @@ export default function ProjectListingComponent({
       <div className={`relative flex items-start p-2 ${className || ""}`}>
         <div className="relative grid w-full grid-cols-1 items-center gap-5 md:grid-cols-2">
           {projects.map((project) => (
-            <div
-              key={project.name}
-              className="group mx-auto flex w-[320px] cursor-pointer flex-col items-center justify-center gap-4 rounded-lg border bg-background shadow-sm transition hover:shadow-md sm:w-[364px]"
-              onClick={() => {
-                setActiveItem(project);
-                onProjectClick?.(project);
-              }}
-            >
-              <div className="w-full overflow-hidden rounded-t-xl sm:w-[364px]">
-                <Image
-                  src={project.logo}
-                  alt={project.name}
-                  width={364}
-                  height={364}
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex w-full flex-col gap-y-1 px-4 pb-5">
-                <div className="font-medium">{project.name}</div>
-                <div className="text-xs text-muted-foreground">
-                  {project.description}
+            <BlurFade delay={0.25} inView key={project.name}>
+              <div
+                className="group mx-auto flex w-[320px] cursor-pointer flex-col items-center justify-center gap-4 rounded-lg border bg-background shadow-sm transition hover:shadow-md sm:w-[364px]"
+                onClick={() => {
+                  setActiveItem(project);
+                  onProjectClick?.(project);
+                }}
+              >
+                <div className="w-full overflow-hidden rounded-t-xl sm:w-[364px]">
+                  <Image
+                    src={project.logo}
+                    alt={project.name}
+                    width={364}
+                    height={364}
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex w-full flex-col gap-y-1 px-4 pb-5">
+                  <div className="font-medium">{project.name}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {project.description}
+                  </div>
                 </div>
               </div>
-            </div>
+            </BlurFade>
           ))}
         </div>
       </div>

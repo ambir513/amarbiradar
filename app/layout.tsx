@@ -12,10 +12,6 @@ export const metadata: Metadata = {
   title: "Amar Biradar - A Full Stack web developer.",
   description:
     "Welcome to my personal website where I share my projects, blogs, and experiences as a full stack web developer.",
-  icons: [
-    { url: "/image/ab.png", type: "image/png" },
-    { rel: "apple-touch-icon", url: "/image/ab.png" },
-  ],
   keywords: [
     "Amar Biradar",
     "ambir513",
